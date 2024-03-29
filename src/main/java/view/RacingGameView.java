@@ -2,10 +2,6 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-
-import model.Car;
-import model.RacingGame;
 
 public class RacingGameView {
     private final Scanner sc = new Scanner(System.in);
@@ -24,16 +20,14 @@ public class RacingGameView {
         System.out.println("실행 결과");
     }
 
-    public void printCarResult(List<Car> cars) {
-        cars.forEach(car -> {
-            System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
-        });
+    public void printCarResult(String carName, int carPosition) {
+        System.out.println(carName + " : " + "-".repeat(carPosition));
         System.out.println();
     }
 
-    public void printWinnerMessage(RacingGame racingGame) {
+    public void printWinnerMessage(List<String> winnerNames) {
         System.out.println(
-            String.join(", ", racingGame.getWinnerNames())
+            String.join(", ", winnerNames)
             + "가 최종 우승했습니다.");
     }
 

@@ -39,10 +39,11 @@ public class RacingController {
         racingGameView.printResultMessage();
         for (int i = 0; i < tryNumber; i++) {
             racingGame.moveCars(numberGenerator);
-            racingGameView.printCarResult(racingGame.getRacingCars());
+            racingGame.getRacingCars()
+                    .forEach(car -> racingGameView.printCarResult(car.getName(), car.getPosition()));
         }
 
-        racingGameView.printWinnerMessage(racingGame);
+        racingGameView.printWinnerMessage(racingGame.getWinnerNames());
     }
 
     private List<Car> createCars() {
