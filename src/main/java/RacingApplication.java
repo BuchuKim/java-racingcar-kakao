@@ -1,7 +1,7 @@
 import controller.RacingController;
 import model.NumberGenerator;
 import service.RacingService;
-import util.RandomNumberGenerator;
+import infrastructure.RandomNumberGenerator;
 import view.RacingGameView;
 
 public class RacingApplication {

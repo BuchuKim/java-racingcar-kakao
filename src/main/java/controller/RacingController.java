@@ -4,7 +4,6 @@ import model.Car;
 import model.NumberGenerator;
 import model.RacingGame;
 import service.RacingService;
-import util.RandomNumberGenerator;
 import view.RacingGameView;
 
 import java.util.List;
