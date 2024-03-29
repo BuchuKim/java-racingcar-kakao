@@ -1,8 +1,10 @@
 package calculator;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Calculator {
     private static final String DEFAULT_SEPARATOR = ",|:";
@@ -23,17 +25,15 @@ public class Calculator {
     }
 
     private int add(String[] numbers) {
-        return Arrays.stream(numbers)
-            .map(this::validateAndParse)
-            .reduce(Integer::sum)
-            .orElse(0);
+        List<Integer> parsedNumbers = Arrays.stream(numbers)
+            .map(this::parseToInt).collect(Collectors.toList());
+        parsedNumbers.forEach(this::validatePositive);
+        return parsedNumbers.stream().reduce(0, Integer::sum);
     }
 
-    private int validateAndParse(String input) {
+    private int parseToInt(String input) {
         try {
-            int parsed = Integer.parseInt(input);
-            validatePositive(parsed);
-            return parsed;
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new RuntimeException("숫자만을 입력해야 합니다.");
         }
