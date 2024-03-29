@@ -33,9 +33,7 @@ public class RacingGameView {
 
     public void printWinnerMessage(RacingGame racingGame) {
         System.out.println(
-            racingGame.getWinners().stream()
-            .map(Car::getName)
-            .collect(Collectors.joining(", "))
+            String.join(", ", racingGame.getWinnerNames())
             + "가 최종 우승했습니다.");
     }
 

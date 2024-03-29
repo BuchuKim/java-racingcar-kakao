@@ -1,8 +1,5 @@
 package model;
 
-import util.RandomNumberGenerator;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,13 +18,14 @@ public class RacingGame {
         return this.cars;
     }
 
-    public List<Car> getWinners() {
+    public List<String> getWinnerNames() {
         int maxPosition = cars.stream()
                 .map(Car::getPosition)
                 .reduce(0, Integer::max);
 
         return cars.stream()
             .filter(car -> car.hasSamePosition(maxPosition))
+            .map(Car::getName)
             .collect(Collectors.toList());
     }
 }
